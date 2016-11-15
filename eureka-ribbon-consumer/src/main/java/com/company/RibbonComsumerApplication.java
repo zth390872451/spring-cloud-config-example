@@ -1,14 +1,15 @@
 package com.company;
+
+import com.company.web.util.ApplicationSupport;
+import com.netflix.loadbalancer.RandomRule;
+import com.netflix.loadbalancer.RoundRobinRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by feel on 2016/10/23.
@@ -22,15 +23,13 @@ public class RibbonComsumerApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(RibbonComsumerApplication.class);
 
-	@Bean
-	@LoadBalanced
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
 
 	public static void main(String[] args) throws Exception {
 
 		SpringApplication.run(RibbonComsumerApplication.class, args);
+
+		RoundRobinRule ribbonRule = (RoundRobinRule) ApplicationSupport.getBeanByClass(RoundRobinRule.class);
+		System.out.println("ribbonRule = " + ribbonRule);
 
 	}
 }

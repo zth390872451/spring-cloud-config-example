@@ -1,6 +1,9 @@
 package com.company.web.controller;
 
 import com.company.web.service.ComputeService;
+import com.company.web.util.ApplicationSupport;
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RoundRobinRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,12 @@ public class ConsumerController {
     @RequestMapping(value = "/compute", method = RequestMethod.GET)
     public String add() {
         logger.info("{}", "srping-ribbon-service-add2 method");
+//        Object iRule = ApplicationSupport.getBean("IRule");
+//        Object beanByClass = ApplicationSupport.getBeanByClass(IRule.class);
+//        System.out.println("iRule = " + beanByClass);
+
+        RoundRobinRule ribbonRule = (RoundRobinRule) ApplicationSupport.getBeanByClass(RoundRobinRule.class);
+        System.out.println("ribbonRule = " + ribbonRule);
         return restTemplate.getForEntity("http://DIDISPACE/compute", String.class).getBody();
     }
 
