@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = {"com.gizwits.controller","com.gizwits.service"})
+@EnableFeignClients
 @ComponentScan(value = "com.company")
 public class FeignComsumerApplication {
 

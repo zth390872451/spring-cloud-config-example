@@ -25,3 +25,5 @@ https://github.com/Netflix/Hystrix/wiki/Configuration hystrix配置介绍
 http://blog.vicoder.com/hystrix-configuration/ 配置介绍
 
 http://www.insaneprogramming.be/blog/2014/08/19/hystrix-spring-boot/ boot集成hystrix
+
+https://yq.aliyun.com/articles/61510 Spring Cloud -- Hystrix 配置说明
