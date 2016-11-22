@@ -25,8 +25,8 @@ public class ConsumerController {
     public Integer add() {
 
         logger.info("{}", "srping-feigin-service-add2 method");
-
-        return computeClient.add(10, 30);
+        Integer result = computeClient.add(10, 30);
+        return result;
     }
 }
 

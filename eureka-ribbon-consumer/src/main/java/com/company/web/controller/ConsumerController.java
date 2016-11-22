@@ -7,6 +7,7 @@ import com.netflix.loadbalancer.RoundRobinRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,7 +37,8 @@ public class ConsumerController {
 
         RoundRobinRule ribbonRule = (RoundRobinRule) ApplicationSupport.getBeanByClass(RoundRobinRule.class);
         System.out.println("ribbonRule = " + ribbonRule);
-        return restTemplate.getForEntity("http://DIDISPACE/compute", String.class).getBody();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("http://DIDISPACE/compute", String.class);
+        return forEntity.getBody();
     }
 
     @RequestMapping(value = "/compute2", method = RequestMethod.GET)

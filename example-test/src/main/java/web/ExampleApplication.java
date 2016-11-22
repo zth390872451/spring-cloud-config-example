@@ -1,5 +1,6 @@
 package web;
 
+import de.codecentric.boot.admin.config.EnableAdminServer;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import web.util.HttpUtil;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootApplication
+@EnableAdminServer//开启对于其他应用的监控
 public class ExampleApplication {
 
     public static final Map<String,String> params = new HashMap<String, String>();
@@ -15,7 +17,7 @@ public class ExampleApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder(ExampleApplication.class).web(true).run(args);
 
-        Runnable runnable = new Runnable() {
+      /*  Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < 20; i++) {
@@ -41,7 +43,7 @@ public class ExampleApplication {
 
         Thread thread2 = new Thread(runnable2);
         thread2.start();
-
+*/
 
     }
 
