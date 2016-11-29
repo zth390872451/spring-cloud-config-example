@@ -17,11 +17,7 @@
 		<version>1.3.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+ 
 
 	<dependencies>
 		<!--在实际工作过程中，重试是一个经常使用的手段。比如MQ发送消息失败，会采取重试手段，
